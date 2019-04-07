@@ -9,7 +9,28 @@ import Utils.WriteLog;
 
 public class HomePage {
 
-	// DEFINICIJA PROMENJIVIH:
+	// Metoda za otvaranje stranice
+	public static void openPage(WebDriver driver) {
+		WriteLog.write(">Otvaram url : " + URL);
+		driver.get(URL);
+	}
+
+	// Metoda za navodjenje do stranice HomePage URL
+	public static void navigateTo(WebDriver driver) {
+		WriteLog.write(">Prelazim na url : " + URL);
+		driver.navigate().to(URL);
+	}
+
+	/*
+	 * Metoda za univerzalni geter - Potrebno je poslati driver i xpath elementa u
+	 * Stringu koji je vec definisan u ovoj klasi
+	 */
+	public static WebElement getElement(WebDriver driver, String element) {
+		WebElement wb = driver.findElement(By.xpath(element));
+		return wb;
+	}
+
+	// DEFINICIJA PROMENJIVIH
 
 	// URL
 	public static final String URL = "http://localhost/izlet/";
@@ -28,32 +49,5 @@ public class HomePage {
 	public static final String NEW_EMAIL_TEXTBOX = "//input[@name='email']";
 	public static final String NEW_PASSWORD_TEXTBOX = "//form[@action='processregister.php']//input[@name='password']";
 	public static final String REGISTER_BUTTON = "//input[@id='blue_btn']";
-
-	// METODE :
-
-	// METODA ZA OTVARANJE STRANICE
-	public static void openPage(WebDriver driver) {
-		WriteLog.write(">Otvaram url : " + URL);
-		driver.get(URL);
-	}
-
-	// METODA ZA NAVODJENJE DO STRANICE SA
-	// TESTOM VIDLJIVOSTI I DOSTUPNOSTI ELEMENATA
-	public static void navigateTo(WebDriver driver) {
-		WriteLog.write(">Prelazim na url : " + URL);
-		driver.navigate().to(URL);
-
-	}
-
-	// METODA UNIVERZALNI GETER
-	/*
-	 * Potrebno je poslati driver i xpath elementa u Stringu koji je vec definisan u
-	 * ovoj klasi
-	 */
-
-	public static WebElement getElement(WebDriver driver, String element) {
-		WebElement wb = driver.findElement(By.xpath(element));
-		return wb;
-	}
 
 }
